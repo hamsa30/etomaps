@@ -1,0 +1,64 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title class="logo">ETOMAPS</mat-card-title>
+      <mat-card-subtitle>Login to ETOMAPS</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <button mat-flat-button color="primary" class="google-btn">
+        <mat-icon>login</mat-icon>
+        Access control when automatically with Google
+      </button>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email">
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+
+        <div class="remember-forgot">
+          <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+
+        <button mat-flat-button color="primary" type="submit" class="login-btn">
+          SIGN IN
+        </button>
+      </form>
+
+      <mat-divider class="divider">Or sign in with</mat-divider>
+
+      <div class="social-login">
+        <button mat-icon-button class="social-btn">
+          <mat-icon svgIcon="citybud"></mat-icon>
+        </button>
+        <button mat-icon-button class="social-btn">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <button mat-icon-button class="social-btn">
+          <mat-icon>alternate_email</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+
+    <mat-card-footer class="footer">
+      <p>By signing up online, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+      <p>New user? <a routerLink="/register">Register</a></p>
+    </mat-card-footer>
+  </mat-card>
+</div>
